@@ -167,12 +167,18 @@ abstract class GenerateLocalesConfig : DefaultTask() {
 // Android needs an explicit locale list for the per-app language picker. The shipped
 // languages are the Lokalise-synced `values-*` directories, so the list is derived from
 // them; a hand-written copy drifts on the next translation pull without any build error.
-val generateLocalesConfig by tasks.registering(GenerateLocalesConfig::class) {
+val generateLocalesConfig = tasks.register<GenerateLocalesConfig>("generateLocalesConfig") {
     resourcesDir.set(rootProject.layout.projectDirectory.dir("composeApp/src/commonMain/composeResources"))
     baseLanguage.set("en")
     outputDir.set(layout.buildDirectory.dir("generated/res/localesConfig"))
 }
 
-android {
-    sourceSets["main"].res.srcDir(generateLocalesConfig.flatMap { it.outputDir })
+androidComponents {
+    onVariants { variant ->
+        variant.sources.res?.addGeneratedSourceDirectory(
+            generateLocalesConfig,
+            GenerateLocalesConfig::outputDir
+        )
+    }
 }
+
