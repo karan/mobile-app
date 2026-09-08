@@ -124,5 +124,6 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.ktor.client.json)
     testImplementation(libs.koin.test)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.compose.components.resources)
 }
