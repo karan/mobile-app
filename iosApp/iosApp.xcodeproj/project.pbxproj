@@ -15,6 +15,9 @@
 		6CF3E16270B477C8D3CDB192 /* NowPlayingInfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E184B96B79725950AACD5BE7 /* NowPlayingInfoStore.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		C29F123E61DAA17B671EC955 /* NowPlayingInfoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE624765BDE4DC4138CA710 /* NowPlayingInfoStoreTests.swift */; };
+		C29F123E61DAA17B671EC956 /* PCMChunker.swift in iosAppTests Sources */ = {isa = PBXBuildFile; fileRef = C8FCC1992F18C88B00185678 /* PCMChunker.swift */; };
+		C29F123E61DAA17B671EC958 /* PCMChunkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FCC19A2F18C88B00185678 /* PCMChunkerTests.swift */; };
+		C29F123E61DAA17B671EC957 /* PCMChunker.swift in iosApp Sources */ = {isa = PBXBuildFile; fileRef = C8FCC1992F18C88B00185678 /* PCMChunker.swift */; };
 		C85119262F18C7A900185678 /* Copus in Frameworks */ = {isa = PBXBuildFile; productRef = C85119252F18C7A900185678 /* Copus */; };
 		C85119282F18C7A900185678 /* Opus in Frameworks */ = {isa = PBXBuildFile; productRef = C85119272F18C7A900185678 /* Opus */; };
 		C851192B2F18C88B00185678 /* FLAC in Frameworks */ = {isa = PBXBuildFile; productRef = C851192A2F18C88B00185678 /* FLAC */; };
@@ -51,6 +54,8 @@
 		C8FCC1982F17E001005E8312 /* AudioDecoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDecoders.swift; sourceTree = "<group>"; };
 		C8SI00022F1B000000000001 /* SiriIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentHandler.swift; sourceTree = "<group>"; };
 		E184B96B79725950AACD5BE7 /* NowPlayingInfoStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NowPlayingInfoStore.swift; sourceTree = "<group>"; };
+		C8FCC1992F18C88B00185678 /* PCMChunker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMChunker.swift; sourceTree = "<group>"; };
+		C8FCC19A2F18C88B00185678 /* PCMChunkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMChunkerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE624765BDE4DC4138CA710 /* NowPlayingInfoStoreTests.swift */,
+				C8FCC19A2F18C88B00185678 /* PCMChunkerTests.swift */,
 			);
 			path = iosAppTests;
 			sourceTree = "<group>";
@@ -113,6 +119,7 @@
 				7555FF7C242A565900829871 /* Products */,
 				42799AB246E5F90AF97AA0EF /* Frameworks */,
 				E184B96B79725950AACD5BE7 /* NowPlayingInfoStore.swift */,
+				C8FCC1992F18C88B00185678 /* PCMChunker.swift */,
 				6697875A889242950A65544F /* iosAppTests */,
 			);
 			sourceTree = "<group>";
@@ -298,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29F123E61DAA17B671EC955 /* NowPlayingInfoStoreTests.swift in Sources */,
+				C29F123E61DAA17B671EC958 /* PCMChunkerTests.swift in Sources */,
+				C29F123E61DAA17B671EC956 /* PCMChunker.swift in iosAppTests Sources */,
 				6CF3E16270B477C8D3CDB192 /* NowPlayingInfoStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +319,7 @@
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				C8FCC1922F17C6A9005E8312 /* NowPlayingCoordinator.swift in Sources */,
 				C8FCC1952F17E001005E8312 /* NativeAudioController.swift in Sources */,
+				C29F123E61DAA17B671EC957 /* PCMChunker.swift in iosApp Sources */,
 				C8OA00022F1B000000000002 /* OAuthWebSession.swift in Sources */,
 				C8OA00022F1B000000000004 /* LocalNetworkProbe.swift in Sources */,
 				C8FCC1972F17E001005E8312 /* AudioDecoders.swift in Sources */,
