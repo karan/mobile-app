@@ -12,17 +12,17 @@ sealed interface ItemList {
     val providerDomain: String
 
     @Serializable
-    data class ArtistAlbums(val mappings: List<ProviderMapping>) : ItemList {
+    data class ArtistAlbums(val providerMappings: List<ProviderMapping>) : ItemList {
         override val mediaType: MediaType = MediaType.ALBUM
-        override val providerDomain: String = mappings.first().providerDomain
+        override val providerDomain: String = providerMappings.first().providerDomain
 
-        constructor(providerMapping: ProviderMapping) : this(mappings = listOf(providerMapping))
+        constructor(providerMapping: ProviderMapping) : this(providerMappings = listOf(providerMapping))
     }
 
     @Serializable
-    data class ArtistTopTracks(val mappings: List<ProviderMapping>) : ItemList {
+    data class ArtistTopTracks(val providerMappings: List<ProviderMapping>) : ItemList {
         override val mediaType: MediaType = MediaType.TRACK
-        override val providerDomain: String = mappings.first().providerDomain
+        override val providerDomain: String = providerMappings.first().providerDomain
     }
 
     @Serializable
@@ -35,13 +35,13 @@ sealed interface ItemList {
 fun ItemList.toRequests(): List<Request> {
     return when (this) {
         is ItemList.ArtistAlbums -> {
-            this.mappings.map {
+            this.providerMappings.map {
                 Request.Artist.getAlbums(it.itemId, it.providerInstance)
             }
         }
 
         is ItemList.ArtistTopTracks -> {
-            this.mappings.map {
+            this.providerMappings.map {
                 Request.Artist.getTopTracks(it.itemId, it.providerInstance)
             }
         }

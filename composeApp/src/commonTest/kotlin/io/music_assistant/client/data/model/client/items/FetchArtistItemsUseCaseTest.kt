@@ -141,7 +141,7 @@ class FetchArtistItemsUseCaseTest {
         val useCase = FetchArtistItemsUseCase(mediaItemRepository)
         val artistItems = useCase.run(artist) { ItemList.ArtistAlbums(it) }
 
-        val expectedItemList = ItemList.ArtistAlbums(mappings = listOf(mapping1, mapping2))
+        val expectedItemList = ItemList.ArtistAlbums(providerMappings = listOf(mapping1, mapping2))
         assertEquals(
             ArtistItems(
                 items = mapping1Albums + mapping2Albums,
