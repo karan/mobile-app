@@ -992,9 +992,9 @@ private fun <T : AppMediaItem> SectionRow(
                 list = section.itemList,
                 filter = if (section.providerFilter != null) {
                     ItemCategory.Filter(
-                        label = section.providerFilter.current.providerDomain?.toDisplayString() ?: DisplayString.Raw(""),
+                        label = section.providerFilter.current.providerDomain.toDisplayString(),
                         options = section.providerFilter.options,
-                        labelTransform = { it.providerDomain?.toDisplayString() ?: DisplayString.Raw("") },
+                        labelTransform = { it.providerDomain.toDisplayString() },
                         contentDescription = Res.string.cd_provider_filter,
                     )
                 } else {
