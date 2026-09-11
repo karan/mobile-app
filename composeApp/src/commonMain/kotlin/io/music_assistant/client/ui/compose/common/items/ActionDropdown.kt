@@ -4,7 +4,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,15 +23,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import io.music_assistant.client.data.model.client.ClickContext
 import io.music_assistant.client.settings.DefaultClickOption
 import org.jetbrains.compose.resources.stringResource
-
-private val ACTION_MENU_MIN_HEIGHT = 280.dp
-private val ACTION_MENU_MAX_HEIGHT = 600.dp
 
 /**
  * Dropdown over [DefaultClickOption]s. Both the selected value and open-menu options wrap long
@@ -50,11 +44,6 @@ fun ActionDropdown(
 ) {
     var expanded by remember { mutableStateOf(false) }
     val selectedAction = selected.toItemAction()
-    val windowHeight = with(LocalDensity.current) {
-        LocalWindowInfo.current.containerSize.height.toDp()
-    }
-    val actionMenuMaxHeight = (windowHeight / 2)
-        .coerceIn(ACTION_MENU_MIN_HEIGHT, ACTION_MENU_MAX_HEIGHT)
     val shape = RoundedCornerShape(4.dp)
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -81,11 +70,7 @@ fun ActionDropdown(
             )
             ExposedDropdownMenuDefaults.TrailingIcon(expanded)
         }
-        ExposedDropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.heightIn(max = actionMenuMaxHeight),
-        ) {
+        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             options.forEach { action ->
                 val itemAction = action.toItemAction()
                 DropdownMenuItem(
