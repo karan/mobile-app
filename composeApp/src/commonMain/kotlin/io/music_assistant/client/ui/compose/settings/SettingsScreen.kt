@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -558,6 +559,7 @@ private fun ExperimentalPill() {
         modifier = Modifier
             .clip(RoundedCornerShape(6.dp))
             .background(MaterialTheme.colorScheme.primary)
+            .wrapContentWidth(unbounded = true)
             .padding(horizontal = 6.dp, vertical = 1.dp),
     ) {
         Text(
@@ -629,7 +631,7 @@ private fun ConnectionMethodTabs(
                         horizontalArrangement = Arrangement.Center,
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                         itemVerticalAlignment = Alignment.CenterVertically,
-                        maxItemsInEachRow = 2,
+                        maxItemsInEachRow = 1,
                     ) {
                         Text(stringResource(Res.string.settings_connection_webrtc))
                         ExperimentalPill()
