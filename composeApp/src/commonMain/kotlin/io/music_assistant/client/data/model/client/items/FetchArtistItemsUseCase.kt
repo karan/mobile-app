@@ -2,6 +2,8 @@ package io.music_assistant.client.data.model.client.items
 
 import io.music_assistant.client.data.model.server.ProviderMapping
 import io.music_assistant.client.data.repository.MediaItemRepository
+import io.music_assistant.client.data.repository.fetchMediaItems
+import io.music_assistant.client.ui.compose.common.getOrEmptyList
 import io.music_assistant.client.ui.compose.item.ItemList
 import io.music_assistant.client.ui.compose.item.toRequests
 
@@ -17,11 +19,7 @@ class FetchArtistItemsUseCase(private val mediaItemRepository: MediaItemReposito
         val providers = artist.providerMappings.groupBy { it.providerInstance }.map { it.value }
         val itemLists = providers.map { itemListBuilder(it) }
         for (itemList in itemLists) {
-            val items = itemList.toRequests().flatMap {
-                val result = mediaItemRepository.fetchMediaItems(it)
-                result.getOrNull() ?: emptyList()
-            }
-
+            val items = mediaItemRepository.fetchMediaItems(itemList.toRequests()).getOrEmptyList()
             if (items.isNotEmpty()) {
                 return ArtistItems(items, itemList, itemLists)
             }

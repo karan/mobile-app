@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import io.music_assistant.client.api.Request
 import io.music_assistant.client.data.repository.MediaItemChange
 import io.music_assistant.client.data.repository.MediaItemRepository
+import io.music_assistant.client.data.repository.fetchMediaItems
 import io.music_assistant.client.ui.compose.common.DataState
 import io.music_assistant.client.ui.compose.common.StaleReason
 import io.music_assistant.client.ui.compose.common.getOrEmptyList
@@ -98,10 +99,7 @@ class MediaItemDataMediator(
         requests?.let {
             stateFlow.value = DataState.Loading()
             try {
-                val items = it.flatMap {
-                    mediaItemRepository.fetchMediaItems(it).getOrEmptyList()
-                }
-
+                val items = mediaItemRepository.fetchMediaItems(it).getOrEmptyList()
                 stateFlow.value = DataState.Data(items)
             } catch (_: Exception) {
                 stateFlow.value = DataState.Error()
